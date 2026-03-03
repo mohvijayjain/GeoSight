@@ -1,0 +1,115 @@
+.cinematic-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000000;
+  z-index: 10000;
+  overflow: hidden;
+}
+
+.cinematic-intro.exiting {
+  filter: blur(6px);
+}
+
+.skip-button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  color: #0ea5e9;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  z-index: 10;
+  font-size: 0.875rem;
+}
+
+.skip-button:hover {
+  background: rgba(14, 165, 233, 0.2);
+  transform: translateY(-2px);
+}
+
+.canvas-container {
+  width: 100%;
+  height: 100%;
+}
+
+.intro-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  z-index: 5;
+  letter-spacing: 0.02em;
+  pointer-events: none;
+}
+
+.intro-text.act-1 {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.intro-text.act-2 {
+  font-size: 2.5rem;
+  color: #0ea5e9;
+  font-weight: 700;
+}
+
+.intro-text.act-3 {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.intro-text.act-4 {
+  font-size: 3rem;
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.intro-text.act-5 {
+  font-size: 4rem;
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, #0ea5e9 0%, #06b6d4 100%);
+  transform-origin: left;
+}
+
+@media (max-width: 768px) {
+  .intro-text {
+    font-size: 1.5rem;
+  }
+  
+  .intro-text.act-4,
+  .intro-text.act-5 {
+    font-size: 2rem;
+  }
+  
+  .skip-button {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}

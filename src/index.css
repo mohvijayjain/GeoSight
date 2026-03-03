@@ -1,0 +1,67 @@
+:root {
+  --bg-primary: #000000;
+  --bg-card: #0a0e1a;
+  --accent: #0ea5e9;
+  --text-primary: #ffffff;
+  --text-secondary: #64748b;
+  --rural: #22c55e;
+  --urban: #0ea5e9;
+  --town: #eab308;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f8fafc;
+  --bg-card: #ffffff;
+  --accent: #0284c7;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --rural: #16a34a;
+  --urban: #0284c7;
+  --town: #ca8a04;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', 'Roboto', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  perspective: 1200px;
+  overflow-x: hidden;
+  min-width: 320px;
+  font-size: 16px;
+}
+
+/* Hide all scrollbars */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+html,
+body,
+* {
+  -ms-overflow-style: none !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input, select {
+  font-family: inherit;
+}

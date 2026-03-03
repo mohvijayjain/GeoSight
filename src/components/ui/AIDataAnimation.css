@@ -1,0 +1,18 @@
+.ai-data-animation {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+@media (max-width: 968px) {
+  .ai-data-animation {
+    display: none;
+  }
+}

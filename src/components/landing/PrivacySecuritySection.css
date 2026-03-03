@@ -1,0 +1,78 @@
+.privacy-security {
+  padding: 80px 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.privacy-content {
+  text-align: center;
+}
+
+.privacy-content h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  color: var(--text-primary);
+}
+
+.privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  text-align: left;
+}
+
+.privacy-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(14, 165, 233, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.privacy-point:hover {
+  border-color: rgba(14, 165, 233, 0.2);
+  background: rgba(15, 23, 42, 0.6);
+}
+
+.privacy-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.privacy-text h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.privacy-text p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .privacy-security {
+    padding: 60px 2rem;
+  }
+
+  .privacy-content h3 {
+    font-size: 1.75rem;
+  }
+
+  .privacy-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .privacy-point {
+    padding: 1.25rem;
+  }
+}

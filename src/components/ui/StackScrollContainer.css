@@ -1,0 +1,37 @@
+.stack-scroll-container {
+  position: relative;
+  height: auto;
+}
+
+.stack-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.stack-section:nth-child(1) {
+  background: transparent;
+}
+
+.stack-section:nth-child(2) {
+  background: transparent;
+}
+
+.stack-section:nth-child(3) {
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .stack-scroll-container {
+    height: auto;
+  }
+  
+  .stack-section {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+  }
+}

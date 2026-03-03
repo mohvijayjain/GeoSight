@@ -1,0 +1,39 @@
+.map-teaser {
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.map-teaser:hover {
+  transform: scale(1.02);
+}
+
+.map-preview {
+  background: rgba(10, 14, 26, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  transition: all 0.3s ease;
+}
+
+.map-teaser:hover .map-preview {
+  border-color: rgba(14, 165, 233, 0.4);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.2);
+}
+
+.map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.map-label {
+  display: block;
+  text-align: center;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--accent);
+  font-weight: 600;
+}

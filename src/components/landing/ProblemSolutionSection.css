@@ -1,0 +1,122 @@
+.problem-solution {
+  padding: 120px 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.problem-solution-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.problem-left {
+  display: flex;
+  justify-content: center;
+}
+
+.satellite-visual {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+.satellite-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-cell {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grid-cell.urban {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+
+.grid-cell.rural {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+}
+
+.grid-cell.town {
+  background: linear-gradient(135deg, #7c2d12 0%, #9a3412 100%);
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #0ea5e9 50%, transparent 100%);
+  animation: scan 3s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(300px); opacity: 0; }
+}
+
+.problem-right h2 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.pain-points {
+  margin-bottom: 2.5rem;
+}
+
+.pain-point {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+}
+
+.pain-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  flex-shrink: 0;
+}
+
+.solution-statement {
+  font-size: 1.25rem;
+  color: var(--accent);
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+@media (max-width: 968px) {
+  .problem-solution {
+    padding: 80px 2rem;
+  }
+
+  .problem-solution-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .problem-right h2 {
+    font-size: 2rem;
+  }
+
+  .satellite-visual {
+    width: 250px;
+    height: 250px;
+  }
+}

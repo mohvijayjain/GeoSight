@@ -1,0 +1,18 @@
+.typewriter-container {
+  font-size: 1.5rem;
+  color: var(--accent);
+  font-weight: 600;
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typewriter-text {
+  letter-spacing: 0.02em;
+}
+
+.cursor {
+  margin-left: 2px;
+  color: var(--accent);
+}

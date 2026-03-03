@@ -1,0 +1,25 @@
+.depth-layer {
+  width: 100%;
+}
+
+.background-layer {
+  position: fixed;
+  height: 100vh;
+  z-index: -2;
+  top: 0;
+  left: 0;
+}
+
+.mid-layer {
+  position: fixed;
+  height: 100vh;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.foreground-layer {
+  position: relative;
+  z-index: 1;
+}
