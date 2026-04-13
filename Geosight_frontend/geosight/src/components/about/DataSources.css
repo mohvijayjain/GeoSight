@@ -1,0 +1,250 @@
+.data-sources {
+  margin-top: 2rem;
+}
+
+.sources-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.sources-header h2 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.sources-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.dataset-characteristics {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+}
+
+.dataset-characteristics h3 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.characteristics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.char-item {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.char-item strong {
+  color: var(--accent);
+  font-size: 0.875rem;
+}
+
+.char-item span {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.dataset-note {
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.spectral-bands-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(139, 92, 246, 0.05);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+}
+
+.spectral-bands-section h3 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.bands-subtitle {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.bands-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.band-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.band-row.band-header {
+  background: rgba(99, 102, 241, 0.2);
+  font-weight: 700;
+}
+
+.band-name {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.band-purpose {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.bands-note {
+  color: var(--text-secondary);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.source-card {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px solid rgba(99, 102, 241, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.source-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.2);
+}
+
+.source-card.selected {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.source-header {
+  display: flex;
+  align-items: center;
+  gap: 0rem;
+  margin-bottom: 1.5rem;
+}
+
+.source-icon {
+  font-size: 3.5rem;
+}
+
+.source-header h3 {
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.source-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.info-label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.info-value {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.source-details {
+  margin: 1rem 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.source-description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.source-features {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.source-features strong {
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.source-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.source-features li {
+  padding: 0.25rem 0;
+  color: var(--text-secondary);
+}
+
+.learn-more-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.learn-more-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .sources-grid {
+    grid-template-columns: 1fr;
+  }
+}

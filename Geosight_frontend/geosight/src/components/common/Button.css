@@ -1,0 +1,143 @@
+.btn {
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-body);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366F1 0%, #A78BFA 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #4F46E5 0%, #9333EA 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(-2px) scale(0.97);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.4);
+}
+
+/* Stellaris Button */
+.btn-stellaris {
+  position: relative;
+  padding: 0.875rem 2.25rem;
+  background: transparent;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  isolation: isolate;
+  transition: transform 0.2s ease;
+}
+
+.btn-stellaris:hover {
+  transform: scale(1.04);
+}
+
+.btn-stellaris:active {
+  transform: scale(0.97);
+}
+
+/* Animated rotating border */
+.stellaris-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 100px;
+  padding: 1.5px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    #6366f1,
+    #a78bfa,
+    #38bdf8,
+    #6366f1
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: spin-border 3s linear infinite;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-border {
+  to { --angle: 360deg; }
+}
+
+/* Inner dark fill */
+.btn-stellaris::before {
+  content: '';
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 100px;
+  background: #0f0f14;
+  z-index: -1;
+}
+
+/* Top shine */
+.stellaris-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.8), transparent);
+  border-radius: 100px;
+  transition: opacity 0.3s ease;
+}
+
+.btn-stellaris:hover .stellaris-glow {
+  opacity: 1;
+  filter: blur(2px);
+}
+
+/* Outer glow on hover */
+.btn-stellaris:hover::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 100px;
+  background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.25), transparent 70%);
+  z-index: -2;
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.stellaris-label {
+  position: relative;
+  z-index: 1;
+}

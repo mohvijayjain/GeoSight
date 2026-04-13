@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "geosight-filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:\\Users\\Mohvijay-sch\\Desktop\\GeoSight2"
+      ]
+    },
+    "geosight-sqlite": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sqlite",
+        "C:\\Users\\Mohvijay-sch\\Desktop\\GeoSight2\\geosight.db"
+      ]
+    },
+    "geosight-memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "github-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<INSERT_YOUR_GITHUB_TOKEN_HERE>"
+      }
+    },
+    "fetch-docs": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-fetch"
+      ]
+    }
+  }
+}

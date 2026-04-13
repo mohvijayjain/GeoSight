@@ -1,0 +1,114 @@
+.navbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1.25rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .navbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.1);
+  border-bottom-color: rgba(99, 102, 241, 0.15);
+}
+
+[data-theme="light"] .navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 24px rgba(99, 102, 241, 0.1);
+}
+
+.navbar-container {
+  max-width: 150%;
+  margin: 0 auto;
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navbar-globe {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.navbar-logo {
+  font-size: 3.0rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6366F1 0%, #1d0707 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: var(--font-heading);
+}
+
+.navbar-links {
+  display: flex;
+  gap: 3.0rem;
+  list-style: none;
+}
+
+.navbar-links a {
+  color: var(--text-muted);
+  transition: color 0.3s;
+  position: relative;
+  padding-bottom: 4px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #6366F1, #A78BFA);
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover,
+.navbar-links a.active {
+  color: var(--accent);
+}
+
+.navbar-links a.active::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.2);
+}

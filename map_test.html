@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoSight - Map Selector</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Leaflet Draw CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        #header {
+            background: #1f2937;
+            color: white;
+            padding: 1rem 2rem;
+        }
+        
+        #header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        #header p {
+            font-size: 0.875rem;
+            color: #d1d5db;
+        }
+        
+        #map {
+            height: calc(100vh - 80px);
+            width: 100%;
+        }
+        
+        #control-panel {
+            position: absolute;
+            top: 100px;
+            right: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            width: 320px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+        
+        #control-panel h2 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+        
+        .coords {
+            margin-bottom: 1rem;
+        }
+        
+        .coords div {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .coords span {
+            font-weight: 600;
+        }
+        
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+        
+        button:disabled {
+            background: #e5e7eb;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        button:not(:disabled) {
+            background: #2563eb;
+            color: white;
+        }
+        
+        button:not(:disabled):hover {
+            background: #1d4ed8;
+        }
+        
+        .message {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
+        
+        .error {
+            background: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+        
+        .success {
+            background: #d1fae5;
+            border: 1px solid #6ee7b7;
+            color: #065f46;
+        }
+        
+        .info {
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+        
+        .download-btn {
+            margin-top: 0.75rem;
+            background: #059669;
+        }
+        
+        .download-btn:hover {
+            background: #047857;
+        }
+        
+        .instructions {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .instructions h3 {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .instructions ol {
+            font-size: 0.75rem;
+            color: #6b7280;
+            padding-left: 1.25rem;
+        }
+        
+        .instructions li {
+            margin-bottom: 0.25rem;
+        }
+        
+        .no-selection {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>GeoSight - Area Selector</h1>
+        <p>Draw a rectangle on the map to select your area of interest</p>
+    </div>
+    
+    <div id="map"></div>
+    
+    <div id="control-panel">
+        <h2>Selected Area</h2>
+        
+        <div id="coords-display" class="coords" style="display: none;">
+            <div><span>Min Lon:</span> <span id="minLon">-</span></div>
+            <div><span>Min Lat:</span> <span id="minLat">-</span></div>
+            <div><span>Max Lon:</span> <span id="maxLon">-</span></div>
+            <div><span>Max Lat:</span> <span id="maxLat">-</span></div>
+        </div>
+        
+        <div id="no-selection" class="no-selection">
+            No area selected. Use the rectangle tool to draw on the map.
+        </div>
+        
+        <button id="fetch-btn" disabled>Fetch Sentinel-2 Image</button>
+        
+        <div id="message"></div>
+        
+        <div class="instructions">
+            <h3>Instructions:</h3>
+            <ol>
+                <li>Click the rectangle tool in the map toolbar</li>
+                <li>Draw a rectangle over your area of interest</li>
+                <li>Click "Fetch Sentinel-2 Image"</li>
+                <li>Wait for the image to download</li>
+                <li>Download the GeoTIFF file</li>
+            </ol>
+        </div>
+    </div>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Leaflet Draw JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    
+    <script>
+        // Initialize map
+        const map = L.map('map').setView([20.5937, 78.9629], 5); // Center on India
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+        
+        // Initialize drawn items layer
+        const drawnItems = new L.FeatureGroup();
+        map.addLayer(drawnItems);
+        
+        // Add drawing control
+        const drawControl = new L.Control.Draw({
+            draw: {
+                rectangle: {
+                    shapeOptions: {
+                        color: '#2563eb',
+                        weight: 2,
+                        fillOpacity: 0.2
+                    }
+                },
+                polygon: false,
+                circle: false,
+                circlemarker: false,
+                marker: false,
+                polyline: false
+            },
+            edit: {
+                featureGroup: drawnItems,
+                remove: true
+            }
+        });
+        map.addControl(drawControl);
+        
+        let selectedBounds = null;
+        
+        // Handle rectangle drawn
+        map.on(L.Draw.Event.CREATED, function(e) {
+            const layer = e.layer;
+            
+            // Clear previous rectangles
+            drawnItems.clearLayers();
+            drawnItems.addLayer(layer);
+            
+            // Get bounds
+            const bounds = layer.getBounds();
+            selectedBounds = {
+                minLon: bounds.getWest(),
+                minLat: bounds.getSouth(),
+                maxLon: bounds.getEast(),
+                maxLat: bounds.getNorth()
+            };
+            
+            // Update UI
+            document.getElementById('minLon').textContent = selectedBounds.minLon.toFixed(4);
+            document.getElementById('minLat').textContent = selectedBounds.minLat.toFixed(4);
+            document.getElementById('maxLon').textContent = selectedBounds.maxLon.toFixed(4);
+            document.getElementById('maxLat').textContent = selectedBounds.maxLat.toFixed(4);
+            
+            document.getElementById('coords-display').style.display = 'block';
+            document.getElementById('no-selection').style.display = 'none';
+            document.getElementById('fetch-btn').disabled = false;
+            document.getElementById('message').innerHTML = '';
+        });
+        
+        // Try to get user's location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    map.setView([position.coords.latitude, position.coords.longitude], 13);
+                },
+                function(error) {
+                    console.log('Location access denied, using default location');
+                }
+            );
+        }
+        
+        // Fetch image button
+        document.getElementById('fetch-btn').addEventListener('click', async function() {
+            if (!selectedBounds) {
+                showMessage('Please draw a rectangle on the map first', 'error');
+                return;
+            }
+            
+            const btn = this;
+            btn.disabled = true;
+            btn.textContent = 'Fetching Image...';
+            showMessage('Fetching image from Google Earth Engine...', 'info');
+            
+            try {
+                const response = await fetch('http://localhost:5000/api/fetch-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        bounds: selectedBounds,
+                        cloudCover: 10,
+                        startDate: '2024-01-01',
+                        endDate: '2024-12-31'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showSuccess(data);
+                } else {
+                    showMessage(data.error || 'Failed to fetch image', 'error');
+                }
+            } catch (err) {
+                showMessage('Failed to connect to backend: ' + err.message, 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Fetch Sentinel-2 Image';
+            }
+        });
+        
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.className = 'message ' + type;
+            messageDiv.innerHTML = '<strong>' + (type === 'error' ? 'Error:' : 'Info:') + '</strong> ' + text;
+        }
+        
+        function showSuccess(data) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.className = 'message success';
+            messageDiv.innerHTML = `
+                <strong>Success!</strong>
+                <div class="info">
+                    <p><strong>File:</strong> ${data.file}</p>
+                    <p><strong>Size:</strong> ${data.info.width} x ${data.info.height} px</p>
+                    <p><strong>Bands:</strong> ${data.info.bands}</p>
+                    <p><strong>Resolution:</strong> ${data.info.resolution}</p>
+                    <p><strong>Band Order:</strong></p>
+                    <ul style="list-style: disc; padding-left: 1.25rem; margin-top: 0.25rem;">
+                        ${data.info.band_order.map(band => '<li>' + band + '</li>').join('')}
+                    </ul>
+                </div>
+                <a href="http://localhost:5000/api/download/${data.file}" download>
+                    <button class="download-btn">Download GeoTIFF</button>
+                </a>
+            `;
+        }
+    </script>
+</body>
+</html>

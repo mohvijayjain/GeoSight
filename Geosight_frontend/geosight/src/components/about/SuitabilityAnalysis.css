@@ -1,0 +1,229 @@
+.suitability-analysis {
+  margin-top: 2rem;
+}
+
+.analysis-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.analysis-header h2 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.analysis-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.analysis-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.analysis-section {
+  padding: 2rem;
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+}
+
+.analysis-section h3 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.analysis-section h4 {
+  color: var(--accent);
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  margin-top: 1.5rem;
+}
+
+.analysis-section p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.analysis-section strong {
+  color: var(--accent);
+}
+
+.formula-block {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+.formula-line {
+  color: var(--text-primary);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.formula-list {
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+.formula-list li {
+  color: var(--text-primary);
+  padding: 0.25rem 0;
+}
+
+.color-interpretation {
+  margin-top: 1.5rem;
+}
+
+.color-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.color-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.color-box.red {
+  background: #ef4444;
+}
+
+.color-box.yellow {
+  background: #eab308;
+}
+
+.color-box.green {
+  background: #22c55e;
+}
+
+.legend-item span {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.output-note {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(99, 102, 241, 0.2);
+  border-left: 4px solid var(--accent);
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.graph-structure {
+  margin-top: 1.5rem;
+}
+
+.structure-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.structure-item {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.structure-item strong {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+}
+
+.structure-item span {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.evaluation-steps {
+  list-style: decimal;
+  padding-left: 2rem;
+  margin: 1rem 0;
+}
+
+.evaluation-steps li {
+  color: var(--text-primary);
+  padding: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.example-box {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 8px;
+}
+
+.distance-result {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.distance-value {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: rgba(34, 197, 94, 0.2);
+  border: 2px solid #22c55e;
+  border-radius: 8px;
+  color: #22c55e;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.connectivity-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(34, 197, 94, 0.1);
+  border-left: 3px solid #22c55e;
+  border-radius: 4px;
+}
+
+.connectivity-note p {
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .analysis-section {
+    padding: 1.5rem;
+  }
+
+  .color-legend {
+    gap: 0.75rem;
+  }
+
+  .distance-value {
+    font-size: 1.2rem;
+    padding: 0.75rem 1.5rem;
+  }
+}

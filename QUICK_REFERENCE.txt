@@ -1,0 +1,59 @@
+╔════════════════════════════════════════════════════════════════╗
+║           GEOSIGHT - LEAFLET + FLASK QUICK REFERENCE           ║
+╚════════════════════════════════════════════════════════════════╝
+
+┌─ START SYSTEM ─────────────────────────────────────────────────┐
+│ Double-click: start_system.bat                                 │
+│ OR manually:                                                    │
+│   Terminal 1: cd backend && python app.py                      │
+│   Terminal 2: cd Geosight_frontend/geosight && npm run dev     │
+└────────────────────────────────────────────────────────────────┘
+
+┌─ ACCESS ───────────────────────────────────────────────────────┐
+│ Backend:  http://localhost:5000                                │
+│ Frontend: http://localhost:5173                                │
+│ Map Page: http://localhost:5173/map-selector                   │
+└────────────────────────────────────────────────────────────────┘
+
+┌─ API ENDPOINTS ────────────────────────────────────────────────┐
+│ GET  /api/health              - Health check                   │
+│ POST /api/fetch-image         - Fetch Sentinel-2              │
+│ GET  /api/download/<filename> - Download GeoTIFF              │
+└────────────────────────────────────────────────────────────────┘
+
+┌─ IMAGE SPECS ──────────────────────────────────────────────────┐
+│ Bands:      8 (B2,B3,B4,B8,B11,B12,NDVI,NDBI)                 │
+│ Format:     GeoTIFF (single file)                              │
+│ Data Type:  Float32                                            │
+│ Resolution: 10m per pixel                                      │
+│ Source:     COPERNICUS/S2_SR_HARMONIZED                        │
+└────────────────────────────────────────────────────────────────┘
+
+┌─ USAGE FLOW ───────────────────────────────────────────────────┐
+│ 1. Open map page                                               │
+│ 2. Click rectangle tool                                        │
+│ 3. Draw area on map                                            │
+│ 4. Click "Fetch Sentinel-2 Image"                              │
+│ 5. Wait 30-60 seconds                                          │
+│ 6. Click "Download GeoTIFF"                                    │
+│ 7. Use in classification model                                 │
+└────────────────────────────────────────────────────────────────┘
+
+┌─ FILES ────────────────────────────────────────────────────────┐
+│ Backend:  backend/app.py                                       │
+│ Frontend: Geosight_frontend/geosight/src/components/map/       │
+│           MapSelector.jsx                                      │
+│ Docs:     LEAFLET_FLASK_GUIDE.md                               │
+└────────────────────────────────────────────────────────────────┘
+
+┌─ TROUBLESHOOTING ──────────────────────────────────────────────┐
+│ Port 5000 busy:     Change port in app.py                     │
+│ Map not loading:    Check Leaflet CSS imported                │
+│ No images found:    Increase cloudCover to 20-30%             │
+│ Backend error:      Check Earth Engine authentication         │
+└────────────────────────────────────────────────────────────────┘
+
+╔════════════════════════════════════════════════════════════════╗
+║  ANSWER: YES, 100% POSSIBLE WITH YOUR FRONTEND AND BACKEND!    ║
+║  System is ready. Run start_system.bat to begin!               ║
+╚════════════════════════════════════════════════════════════════╝
