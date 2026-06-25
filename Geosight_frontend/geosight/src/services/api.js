@@ -39,9 +39,11 @@ export const classifyImage = async (file, region) => {
   return mockResponses[region] || mockResponses.mumbai;
 };
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 export const fetchSatelliteImage = async (bounds) => {
   try {
-    const response = await fetch('http://localhost:5000/api/fetch-image', {
+    const response = await fetch(`${API_BASE_URL}/api/fetch-image`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
